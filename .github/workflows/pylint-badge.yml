@@ -1,4 +1,5 @@
-- uses: Silleellie/pylint-github-action@v2
+- name: PyLint with dynamic badge
+  uses: Silleellie/pylint-github-action@v2
   with:
     lint-path: ArmaDediHelper.py
     python-version: '3.x'
