@@ -1,5 +1,17 @@
-- name: PyLint with dynamic badge
-  uses: Silleellie/pylint-github-action@v2
-  with:
-    lint-path: ArmaDediHelper.py
-    python-version: 3.11
+name: PyLint with dynamic badge
+
+on:
+  release:
+    types: [push]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: Silleellie/pylint-github-action@v2
+      with:
+        python-version: '3.x'
