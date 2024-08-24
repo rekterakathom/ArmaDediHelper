@@ -3,6 +3,8 @@ Yet another Arma 3 dedicated server creation tool. Get a local dedicated server 
 
 Note: This is intended to be used to run dedicated servers on your client machine, not for "proper" dedicated server installations.
 
+![pylint]()
+
 ## 💡 Features
 - Simple to use, lightweight Python script
 - Easy to install, no third party libraries

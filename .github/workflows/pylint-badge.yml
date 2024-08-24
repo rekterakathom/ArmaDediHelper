@@ -1,0 +1,4 @@
+- uses: Silleellie/pylint-github-action@v2
+  with:
+    lint-path: ArmaDediHelper.py
+    python-version: 3.12
