@@ -13,4 +13,3 @@ jobs:
       uses: Silleellie/pylint-github-action@v2
       with:
         python-version: '3.x'
-        requirements-path: ''
