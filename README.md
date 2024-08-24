@@ -1,6 +1,8 @@
 # ArmaDediHelper
 Yet another Arma 3 dedicated server creation tool. Get a local dedicated server running in seconds, with or without mods.
 
+Note: This is intended to be used to run dedicated servers on your client machine, not for "proper" dedicated server installations.
+
 ## 💡 Features
 - Simple to use, lightweight Python script
 - Easy to install, no third party libraries
