@@ -28,15 +28,15 @@ import os
 import glob
 import shutil
 import platform
+import requests
 from html.parser import HTMLParser
 
 # Version number
 # format: Major, Minor, Patch
-version_number = "0.1.0"
+version_number = "0.2.0"
 
 # To-do list:
-# 1. Make a repository, add the base configuration files there, allow this program to download them from the repository
-# 2. Make a docs page available through GitHub pages that details how to use this program
+# 1. Make a docs page available through GitHub pages that details how to use this program
 
 # Gracefully exit program, informing the user.
 def exit_program(reason):
@@ -87,6 +87,8 @@ def find_serverprofiles_dir():
 def find_base_configuration():
     # The first print has a newline to make reading in terminal easier 
     print("\nLooking for base configs in ServerProfiles...")
+
+    verify_default_configs()
 
     found_base_server = False
     if os.path.isfile('ServerProfiles\\base_server.cfg'):
@@ -200,6 +202,35 @@ def check_preset_files(preset):
     
     return True
 
+def verify_default_configs() -> None:
+    """
+    Checks that base_basic.cfg and base_server.cfg exist.
+    If they do not, they will be downloaded from the GitHub repository.
+    """
+    # Verify basic configuration
+    if not os.path.isfile("ServerProfiles\\base_basic.cfg"):
+        # Download the default one from GitHub
+        response = requests.get("https://raw.githubusercontent.com/rekterakathom/ArmaDediHelper/main/configs/base_basic.cfg")
+        file_path = "ServerProfiles\\base_basic.cfg"
+        if response.status_code == 200:
+            with open(file_path, 'wb') as file:
+                file.write(response.content)
+            print('basic.cfg downloaded successfully')
+        else:
+            print('Failed to download basic.cfg')
+
+    # Verify server configuration
+    if not os.path.isfile("ServerProfiles\\base_server.cfg"):
+        # Download the default one from GitHub
+        response = requests.get("https://raw.githubusercontent.com/rekterakathom/ArmaDediHelper/main/configs/base_server.cfg")
+        file_path = "ServerProfiles\\base_server.cfg"
+        if response.status_code == 200:
+            with open(file_path, 'wb') as file:
+                file.write(response.content)
+            print('server.cfg downloaded successfully')
+        else:
+            print('Failed to download server.cfg')
+
 # Create the preset folders and all the files in it
 def create_preset_files(preset, preset_name):
     # The first print has a newline to make reading in terminal easier 
@@ -212,6 +243,8 @@ def create_preset_files(preset, preset_name):
         except Exception as error:
             print("Error while creating directory for preset: ", error)
             return False
+    
+    verify_default_configs()
 
     # Copy over the basic configuration
     try:
