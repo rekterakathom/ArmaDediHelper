@@ -25,8 +25,8 @@ Note: This is intended to be used to run dedicated servers on your client machin
 4. Follow instructions
 5. Congratulations, you have created a new dedicated Arma 3 server installation 🎉
 
-# 💬 Contributing & Issue reports
+## 💬 Contributing & Issue reports
 All collaborative work, such as issue reports and pull requests, should be submitted to this GitHub repository in their provided sections.
 
-# 📜 Licensing
+## 📜 Licensing
 Licensed with the MIT License with one extra condition. By using this software, you agree to the terms and conditions of the license.
