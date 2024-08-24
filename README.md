@@ -27,4 +27,4 @@ Yet another Arma 3 dedicated server creation tool. Get a local dedicated server 
 All collaborative work, such as issue reports and pull requests, should be submitted to this GitHub repository in their provided sections.
 
 # 📜 Licensing
-Licensed with the MIT License. By using this software, you agree to the terms and conditions of the license.
+Licensed with the MIT License with one extra condition. By using this software, you agree to the terms and conditions of the license.
