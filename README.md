@@ -1,5 +1,5 @@
 # ArmaDediHelper
-![pylint](https://img.shields.io/badge/PyLint-9.16-yellow?logo=python&logoColor=white)
+![pylint](https://img.shields.io/badge/PyLint-9.19-yellow?logo=python&logoColor=white)
 
 Yet another Arma 3 dedicated server creation tool. Get a local dedicated server running in seconds, with or without mods.
 
