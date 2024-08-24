@@ -143,10 +143,9 @@ def find_modpresets():
     for file in glob.glob("ServerProfiles/*.html"):
         try:
             with open(file, "r", -1, "utf-8-sig") as open_file:
-                for line in range(10):
-                    read_line = open_file.readline()
+                for line in open_file:
                     # This string should appear at least twice in the first 10 lines
-                    if "Arma 3 Launcher" in read_line:
+                    if "Arma 3 Launcher" in line:
                         all_found_presets.append(file)
                         break
         except Exception as error:
