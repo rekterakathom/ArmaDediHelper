@@ -33,7 +33,7 @@ import glob
 import shutil
 import platform
 from html.parser import HTMLParser
-import requests
+import urllib.request
 
 # Version number
 # format: Major, Minor, Patch
@@ -259,28 +259,32 @@ def verify_default_configs() -> None:
     # Verify basic configuration
     if not os.path.isfile("ServerProfiles\\base_basic.cfg"):
         # Download the default one from GitHub
-        response = requests.get("https://raw.githubusercontent.com/rekterakathom/"
-                                "ArmaDediHelper/main/configs/base_basic.cfg")
-        file_path = "ServerProfiles\\base_basic.cfg"
-        if response.status_code == 200:
-            with open(file_path, 'wb') as file:
-                file.write(response.content)
-            print('basic.cfg downloaded successfully')
-        else:
-            print('Failed to download basic.cfg')
+        with urllib.request.urlopen("https://raw.githubusercontent.com/rekterakathom/"
+                                    "ArmaDediHelper/main/configs/base_basic.cfg",
+                                    timeout=10) as response:
+            file_path = "ServerProfiles\\base_basic.cfg"
+            content = response.read()
+            if response.getcode() == 200:
+                with open(file_path, 'wb') as file:
+                    file.write(content)
+                print('basic.cfg downloaded successfully')
+            else:
+                print('Failed to download basic.cfg')
 
     # Verify server configuration
     if not os.path.isfile("ServerProfiles\\base_server.cfg"):
         # Download the default one from GitHub
-        response = requests.get("https://raw.githubusercontent.com/rekterakathom/"
-                                "ArmaDediHelper/main/configs/base_server.cfg")
-        file_path = "ServerProfiles\\base_server.cfg"
-        if response.status_code == 200:
-            with open(file_path, 'wb') as file:
-                file.write(response.content)
-            print('server.cfg downloaded successfully')
-        else:
-            print('Failed to download server.cfg')
+        with urllib.request.urlopen("https://raw.githubusercontent.com/rekterakathom/"
+                                    "ArmaDediHelper/main/configs/base_server.cfg",
+                                    timeout=10) as response:
+            file_path = "ServerProfiles\\base_server.cfg"
+            content = response.read()
+            if response.getcode() == 200:
+                with open(file_path, 'wb') as file:
+                    file.write(content)
+                print('server.cfg downloaded successfully')
+            else:
+                print('Failed to download server.cfg')
 
 # Create the preset folders and all the files in it
 def create_preset_files(preset, preset_name):
